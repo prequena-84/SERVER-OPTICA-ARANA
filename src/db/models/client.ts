@@ -2,22 +2,68 @@ import { Schema, model } from 'mongoose'
 import bcrypt from 'bcrypt'
 
 import type { TIdClient } from 'types/TClient'
-import type { IClient, IClientResp } from 'interfaces/Iclient'
+import type { IClient, IClientResp, IClientDocument, IClientModel } from 'interfaces/Iclient'
 
-const clientSchema = new Schema({
-    idClient:{ type: Number, unique: true, required: true }, // Campo único
-    name:String || null,
-    lastName:String || null,
-    document: Number || null,
-    nationality:String || null,
-    passport:String || null,
-    RIF:String || null,
-    age:Number || null,
-    address:String || null,
-    mail:String || null,
-    whastApp:String || null,
-    userName:{ type: String || null, required: true, unique: true },
-    password: { type: String || null, required: true },
+const clientSchema = new Schema<IClientDocument>({
+    // Campo único
+    idClient: { 
+        type: Number, 
+        unique: true, 
+        required: true 
+    }, 
+    /* Con esta modificación indicamos a la base de datos que inicie con null en el caso que 
+    no este definodo el parametro que recibe como dato*/
+    name: { 
+        type:String, 
+        default: null 
+    },
+    lastName: { 
+        type:String, 
+        default: null 
+    },
+    document: { 
+        type:Number, 
+        default: null 
+    },
+    nationality: { 
+        type:String, 
+        default: null 
+    },
+    passport: { 
+        type:String, 
+        default: null 
+    },
+    RIF: { 
+        type:String, 
+        default: null 
+    },
+    age: { 
+        type:Number, 
+        default: null 
+    },
+    address: { 
+        type:String, 
+        default: null 
+    },
+    mail: { 
+        type:String, 
+        default: null 
+    },
+    whastApp: { 
+        type:String, 
+        default: null 
+    },
+    userName: { 
+        type: String, 
+        required: true, 
+        unique: true, 
+        default: null 
+    },
+    password: { 
+        type: String, 
+        required: true, 
+        default: null 
+    },
 })
 
 clientSchema.pre('save', async function(next): Promise<void> {
@@ -93,7 +139,7 @@ clientSchema.statics.createInstance = async function(dataClient:IClient[]):Promi
 
         return {
             data:newClient,
-            message:`Se registro el cliente #${newClient.Id_Cliente} sastifactoriamente`,
+            message:`Se registro el cliente #${newClient.idClient} sastifactoriamente`,
         }
     } catch(err){
         return {
@@ -103,6 +149,7 @@ clientSchema.statics.createInstance = async function(dataClient:IClient[]):Promi
     }
 }
 
-const  Client = model('Client', clientSchema)
-
-export default Client
+/* Con esta Sintaxis de TypeScript le indicamos al modelo que tiene 3 metodos nuevo 
+que no reconocia typeScript sin la definición de las Interfaces*/
+const Client = model<IClientDocument,IClientModel>('Client', clientSchema)
+export default Client;
