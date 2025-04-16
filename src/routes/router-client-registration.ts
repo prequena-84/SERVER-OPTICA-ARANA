@@ -1,5 +1,5 @@
 import bodyParse from 'body-parser'
-import ISR from '../class/Crouter'
+import ISR from '../class/class-router'
 import ClientAdd from  '../modules/insert/client-insert'
 
 import type { IClient } from 'interfaces/Iclient'

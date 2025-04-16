@@ -1,4 +1,4 @@
-import ISR from './class/Crouter' //'class/Crouter'
+import ISR from './class/class-router'
 import cors from 'cors'
 import { PORT } from './config/config-app'
 
