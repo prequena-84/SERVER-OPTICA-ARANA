@@ -1,13 +1,15 @@
 import bodyParse from 'body-parser'
-import { VRouter } from '../interfaces/IRouter'
+import ISR from '../class/Crouter' //'class/Crouter'
 import getClient from '../modules/update/client-update'
 
 import type { IClient } from 'interfaces/Iclient'
 import type { IRequest,IResponse } from 'types/TRouter'
 
-VRouter.use(bodyParse.json())
+const CR = new ISR(), Router = CR.Router()
 
-VRouter.get('/', async (req:IRequest,res:IResponse):Promise<void> => {
+Router.use(bodyParse.json())
+
+Router.get('/', async (req:IRequest,res:IResponse):Promise<void> => {
     try {
         res.status(200).send({
             message:'Servicio de actualización de Clientes',
@@ -19,7 +21,7 @@ VRouter.get('/', async (req:IRequest,res:IResponse):Promise<void> => {
     }
 })
 
-VRouter.post('/update', async (req:IRequest, res:IResponse):Promise<void> => {
+Router.post('/update', async (req:IRequest, res:IResponse):Promise<void> => {
     try {
         const 
             dataClient:IClient = req.body,
@@ -37,4 +39,4 @@ VRouter.post('/update', async (req:IRequest, res:IResponse):Promise<void> => {
     }
 })
 
-export default VRouter;
+export default Router;

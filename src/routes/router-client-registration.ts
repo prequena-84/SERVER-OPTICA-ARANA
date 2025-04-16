@@ -1,13 +1,15 @@
 import bodyParse from 'body-parser'
-import { VRouter } from '../interfaces/IRouter'
+import ISR from '../class/Crouter'
 import ClientAdd from  '../modules/insert/client-insert'
 
 import type { IClient } from 'interfaces/Iclient'
 import type { IRequest,IResponse } from 'types/TRouter'
 
-VRouter.use(bodyParse.json())
+const CR = new ISR(), Router = CR.Router()
 
-VRouter.get('/', async(req:IRequest,res:IResponse):Promise<void> => {
+Router.use(bodyParse.json())
+
+Router.get('/', async(req:IRequest,res:IResponse):Promise<void> => {
     try {
         res.status(200).send({
             message:'Servicio de Registro de Clientes',
@@ -19,7 +21,7 @@ VRouter.get('/', async(req:IRequest,res:IResponse):Promise<void> => {
     }
 }) 
 
-VRouter.post('/registration', async (req:IRequest, res:IResponse):Promise<void> => {
+Router.post('/registration', async (req:IRequest, res:IResponse):Promise<void> => {
     try {
         const dataClient:IClient = req.body, respClient = await ClientAdd(dataClient)
 
@@ -35,4 +37,4 @@ VRouter.post('/registration', async (req:IRequest, res:IResponse):Promise<void> 
     }
 })
 
-export default VRouter
+export default Router
