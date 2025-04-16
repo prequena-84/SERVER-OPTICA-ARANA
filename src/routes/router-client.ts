@@ -1,6 +1,6 @@
-import { VRouter } from 'interfaces/IRouter'
 import bodyParse from 'body-parser'
-import ClientAdd from 'modules/insert/client-insert'
+import { VRouter } from '../interfaces/IRouter'
+import ClientAdd from  '../modules/insert/client-insert'
 
 import type { IClient } from 'interfaces/Iclient'
 import type { IRequest,IResponse } from 'types/TRouter'
@@ -20,26 +20,19 @@ VRouter.get('/', async(req:IRequest,res:IResponse):Promise<void> => {
 }) 
 
 VRouter.post('/registration', async (req:IRequest, res:IResponse):Promise<void> => {
+    try {
+        const dataClient:IClient = req.body, respClient = await ClientAdd(dataClient)
 
-    const 
-        data = req.body,
-        dataClient = {
-            data.idClient, 
-            data.name, 
-            data.lastName, 
-            data.document, 
-            data.nationality, 
-            data.passport, 
-            data.RIF, 
-            data.age, 
-            data.address,   
-            data.mail,
-            data.whastApp, 
-            data.userName, 
-            data.password, 
-        },
-        respClient = await ClientAdd(dataClient)
-
-    // Quede pendiente en aprender como pasar el tipo al metodo ClientAdd
-
+        res.status(200).send({
+            data:respClient.data,
+            message: respClient.message,
+        })
+    } catch(err) {
+        res.status(500).send({
+            data:null,
+            message:`Error en el registro de datos: ${err}`,
+        })
+    }
 })
+
+export default VRouter

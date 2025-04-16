@@ -1,5 +1,5 @@
-import { connectDB, mongoose } from "config/configMongoDB"
-import Client from "db/models/client"
+import { connectDB, mongoose } from '../../config/configMongoDB'
+import Client from '../../db/models/client'
 
 import type { IClient, IClientResp } from "interfaces/Iclient"
 
