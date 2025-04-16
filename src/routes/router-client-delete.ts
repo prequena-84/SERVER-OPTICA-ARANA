@@ -1,6 +1,6 @@
 import bodyParse from 'body-parser'
 import ISR from '../class/class-router'
-import getClient from '../modules/update/client-update'
+import deleteClient from '../modules/delete/client-delete'
 
 import type { IClient } from 'interfaces/Iclient'
 import type { IRequest,IResponse } from 'types/TRouter'
@@ -9,10 +9,10 @@ const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParse.json())
 
-Router.get('/', async (req:IRequest,res:IResponse):Promise<void> => {
+Router.get('/', async(req:IRequest,res:IResponse): Promise<void> => {
     try {
         res.status(200).send({
-            message:'Servicio de actualización de Clientes',
+            message:'Servicio para eliminar Clientes',
         })
     } catch(err) {
         res.status(500).send({
@@ -21,22 +21,24 @@ Router.get('/', async (req:IRequest,res:IResponse):Promise<void> => {
     }
 })
 
-Router.post('/update', async (req:IRequest, res:IResponse):Promise<void> => {
+Router.get('/delete', async(req:IRequest, res:IResponse):Promise<void> => {
     try {
+
         const 
             dataClient:IClient = req.body,
-            resGetClient = await getClient(dataClient.idClient, dataClient)
+            respDeleteClient = await deleteClient(dataClient.idClient)
 
         res.status(200).send({
-            data:resGetClient.data,
-            message: resGetClient.message,
+            data:respDeleteClient.data,
+            message:respDeleteClient.message,
         })
-    } catch(err) {
+    } catch (err) {
+
         res.status(500).send({
             data:null,
-            message:`Error en la actualización de datos del cliente: ${err}`,
+            message:`Error en la descarga de datos de los cliente: ${err}`,
         })
     }
 })
 
-export default Router;
+export default Router

@@ -6,6 +6,7 @@ import type { IClientResp } from "interfaces/Iclient"
 
 const deleteClient = async (idClient: TIdClient): Promise<IClientResp> => {
     try {
+        
         await connectDB()
         const respDelete = await Client.deleteOne({ idClient:idClient })
 
