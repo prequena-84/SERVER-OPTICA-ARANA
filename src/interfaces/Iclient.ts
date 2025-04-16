@@ -21,24 +21,25 @@ interface IClient {
     __v?:number | null;
 }
 
+// Interface para returna el objecto que contega data y message
 interface IClientResp {
     data?:IClient | null;
     message?:string | null;
 }
 
-// Se mezclan  las dos intancias Document y IClient y genera una Interfaces IClientDocument
+// Se unen las dos interface Document y IClient, genera una nueva Interface IClientDocument
 interface IClientDocument extends Document, IClient{}
 
-/* Se definene una interface nueva "IClientModel" que extiende del typo del Model que
+/* Se definene una nueva Interface "IClientModel" que extiende del typo del Model que
 Que contiene los metodo que va agregar typeScript al modelo Siempre se deben definir 
-los statics y methods para que el codigo agregue lso metodos en  typeScript*/
+los statics y methods para que el código agregue los metodos en TypeScript*/
 interface IClientModel extends Model<IClientDocument> {
     updateDataIdClient(idClient:TIdClient, dataUpdate: IClient): Promise<IClientResp>;
     allClient(): Promise<IClient[]>;
     createInstance(dataClient:IClient): Promise<IClientResp>;
 }
 
-// Se exportan todos las Interfaces
+// Se exportan todas las Interfaces
 export {
     IClientDocument,
     IClientModel,
