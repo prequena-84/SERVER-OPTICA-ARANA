@@ -5,7 +5,7 @@ interface IClient {
     /*_id?:TObjectId; Se elimina el Types.ObjectId de la interface ya 
     que generaba un conflicto con la importación del Document que ya trae por default esta
     propiedad al momento de mezcalr ambas instancias*/
-    idClient?:TIdClient | null;
+    idClient:TIdClient;
     name?:string | null;
     lastName?:string | null;
     document?: number | null;

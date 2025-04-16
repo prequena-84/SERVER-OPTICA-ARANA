@@ -9,7 +9,7 @@ const clientSchema = new Schema<IClientDocument>({
     idClient: { 
         type: Number, 
         unique: true, 
-        required: true 
+        required: true
     }, 
     /* Con esta modificación indicamos a la base de datos que inicie con null en el caso que 
     no este definodo el parametro que recibe como dato*/
