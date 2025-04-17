@@ -1,36 +1,32 @@
 import bodyParse from 'body-parser'
-import ISR from '../class/class-router'
-import deleteClient from '../modules/delete/client-delete'
+import ISR from '../../class/class-router'
+import Client from '../../db/models/client'
 
-import type { IClient } from 'interfaces/Iclient'
 import type { IRequest,IResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParse.json())
 
-Router.get('/', async(req:IRequest,res:IResponse): Promise<void> => {
+/*Router.get('/', async(req:IRequest,res:IResponse): Promise<void> => {
     try {
         res.status(200).send({
-            message:'Servicio para eliminar Clientes',
+            message:'Servicio para descargar los datos del Clientes',
         })
     } catch(err) {
         res.status(500).send({
             mensaje:`error en la actualización: ${err}`,
         })
     }
-})
+})*/
 
-Router.get('/delete', async(req:IRequest, res:IResponse):Promise<void> => {
+Router.get('/', async(req:IRequest, res:IResponse):Promise<void> => {
     try {
-
-        const 
-            dataClient:IClient = req.body,
-            respDeleteClient = await deleteClient(dataClient.idClient)
+        const AllClient = await Client.allClient()
 
         res.status(200).send({
-            data:respDeleteClient.data,
-            message:respDeleteClient.message,
+            data:AllClient,
+            message:'Se descargo sastifactoriamente los datos',
         })
     } catch (err) {
 
