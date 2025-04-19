@@ -3,7 +3,7 @@ import Client from '../../db/models/client'
 
 import type { IPrescription,IPrescriptionResp } from 'interfaces/Iprescription'
 
-const reportCLiente = async ():Promise<IPrescriptionResp> => {
+const reportCliente = async ():Promise<IPrescriptionResp> => {
     try {
 
         await connectDB()
@@ -37,3 +37,5 @@ const reportCLiente = async ():Promise<IPrescriptionResp> => {
         mongoose.connection.close()
     }
 }
+
+export default reportCliente
