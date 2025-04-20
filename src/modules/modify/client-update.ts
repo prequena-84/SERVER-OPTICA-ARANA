@@ -4,7 +4,10 @@ import Client from '../../db/models/client'
 import type { TIdClient } from 'types/TClient'
 import type { IClient, IClientResp } from "interfaces/Iclient"
 
-const getClient = async (idClient:TIdClient, data:IClient): Promise<IClientResp> => {
+export default async function getClient(
+    idClient:TIdClient, 
+    data:IClient
+): Promise<IClientResp> {
     try {
 
         await connectDB()
@@ -20,5 +23,3 @@ const getClient = async (idClient:TIdClient, data:IClient): Promise<IClientResp>
         mongoose.connection.close()
     }
 }
-
-export default getClient

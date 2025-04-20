@@ -1,15 +1,16 @@
 import { connectDB, mongoose } from '../../config/configMongoDB'
-import Client from '../../db/models/client'
+import Prescription from '../../db/models/prescription'
 
-import type { TIdClient } from 'types/TClient'
-import type { IClientResp } from 'interfaces/Iclient'
+import type { TIdOperation } from 'types/TPrescription'
+import type { IPrescriptionResp } from 'interfaces/Iprescription'
 
-const deleteClient = async (idClient: TIdClient): Promise<IClientResp> => {
+export default async function deletePrescription(
+    idOperation:TIdOperation
+):Promise<IPrescriptionResp> {
     try {
-        
         await connectDB()
-        const respDelete = await Client.deleteOne({ idClient:idClient })
-
+        const respDelete = await Prescription.deleteOne({ idOperation:idOperation  })
+        
         return {
             data:null,
             message:respDelete.acknowledged ? `Eliminación correcta, Documentos afectados ${respDelete.deletedCount}` : `Eliminación incorrecta, Documentos afectados ${respDelete.deletedCount}`,
@@ -25,5 +26,3 @@ const deleteClient = async (idClient: TIdClient): Promise<IClientResp> => {
         mongoose.connection.close()
     }
 }
-
-export default deleteClient

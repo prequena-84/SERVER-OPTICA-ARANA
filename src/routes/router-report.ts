@@ -1,11 +1,11 @@
-import ISR from '../../class/class-router'
+import ISR from '../class/class-router'
 import reportCliente from 'modules/query/client-report'
 
 import type { IRequest,IResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
-Router.get('/', async(
+export default Router.get('/', async(
     req:IRequest, 
     res:IResponse
 ):Promise<void> => {
@@ -23,7 +23,3 @@ Router.get('/', async(
         })
     }
 })
-
-export default Router
-
-

@@ -109,6 +109,10 @@ prescriptionSchema.statics.updateDataIdPrescription = async function(
     }
 }
 
+prescriptionSchema.statics.allPrescriptions = async function ():Promise<IPrescription[]> {
+    return await this.find()
+}
+
 prescriptionSchema.statics.createInstance = async function(dataClient:IPrescription[]):Promise<IPrescriptionResp> {
     try {
         const [

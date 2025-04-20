@@ -1,4 +1,4 @@
-import type { TIdClient } from "types/TClient"
+import type { TIdOperation } from 'types/TPrescription';
 import { Document, Model } from 'mongoose'
 
 interface IPrescription {
@@ -32,10 +32,11 @@ interface IClientDocument extends Document, IPrescription{}
 
 interface IPrescriptionModel extends Model<IClientDocument> {
     updateDataIdPrescription(
-        idClient:TIdClient, 
+        idOperacion:TIdOperation, 
         dataUpdate:IPrescription,
     ): Promise<IPrescriptionResp>;
     createInstance(dataPrescription:IPrescription): Promise<IPrescriptionResp>;
+    allPrescriptions(): Promise<IPrescription[] | null>
 }
 
 export {
