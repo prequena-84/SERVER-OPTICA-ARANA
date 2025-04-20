@@ -4,9 +4,13 @@ import type { TIdClient } from 'types/TClient'
 import type { IPrescription, IPrescriptionResp, IClientDocument, IPrescriptionModel } from 'interfaces/Iprescription'
 
 const prescriptionSchema = new Schema<IClientDocument>({
-    idClient: { 
+    idOperation: { 
         type: Number, 
         unique: true, 
+        required: true
+    }, 
+    id_Client: { 
+        type: Number, 
         required: true
     }, 
     fecha: { 
@@ -153,7 +157,7 @@ prescriptionSchema.statics.createInstance = async function(dataClient:IPrescript
 
         return {
             data:newPrescription,
-            message:`Se registro el cliente #${newPrescription.idClient} sastifactoriamente`,
+            message:`Se registro el cliente #${newPrescription.id_Client} sastifactoriamente`,
         }
     } catch(err){
         return {

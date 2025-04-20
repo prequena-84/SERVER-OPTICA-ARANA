@@ -1,23 +1,22 @@
-import bodyParse from 'body-parser'
 import ISR from '../../class/class-router'
-import Client from '../../db/models/client'
+import reportCliente from 'modules/query/client-report'
 
 import type { IRequest,IResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
-// Router.use(bodyParse.json())
-
-Router.get('/', async(req:IRequest, res:IResponse):Promise<void> => {
+Router.get('/', async(
+    req:IRequest, 
+    res:IResponse
+):Promise<void> => {
     try {
-        const AllClient = await Client.reportClient()
+        const report = await reportCliente()
 
         res.status(200).send({
-            data:AllClient,
+            data:report,
             message:'Se descargo los del reporte de cliente sastifactoriamente los datos',
         })
     } catch (err) {
-
         res.status(500).send({
             data:null,
             message:`Error en la descarga de datos de los cliente: ${err}`,

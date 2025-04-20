@@ -2,7 +2,8 @@ import type { TIdClient } from "types/TClient"
 import { Document, Model } from 'mongoose'
 
 interface IPrescription {
-    idClient: number;
+    idOperation: number;
+    id_Client: number;
     fecha:Date;
     esferaD:number | 0;
     esferaI:number | 0;
@@ -34,6 +35,7 @@ interface IPrescriptionModel extends Model<IClientDocument> {
         idClient:TIdClient, 
         dataUpdate:IPrescription,
     ): Promise<IPrescriptionResp>;
+    createInstance(dataPrescription:IPrescription): Promise<IPrescriptionResp>;
 }
 
 export {
