@@ -1,5 +1,5 @@
 import ISR from '../class/class-router'
-import reportCliente from 'modules/query/client-report'
+import reportCliente from '../modules/query/client-report'
 
 import type { IRequest,IResponse } from 'types/TRouter'
 
