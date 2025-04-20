@@ -9,17 +9,14 @@ export default async function getClient(
     data:IClient
 ): Promise<IClientResp> {
     try {
-
         await connectDB()
         return await Client.updateDataIdClient(idClient,data)
     } catch(err) {
-
         return {
             data: null,
             message:`Hubo un Error en la actualización del cliente: ${err}`,
         }
     } finally {
-
         mongoose.connection.close()
     }
 }

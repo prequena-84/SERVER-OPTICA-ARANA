@@ -16,13 +16,11 @@ export default async function deletePrescription(
             message:respDelete.acknowledged ? `Eliminación correcta, Documentos afectados ${respDelete.deletedCount}` : `Eliminación incorrecta, Documentos afectados ${respDelete.deletedCount}`,
         }
     } catch(err) {
-
         return {
             data:null ,
             message: `Se genero el siguiente error: ${err}`,
         }
     } finally {
-
         mongoose.connection.close()
     }
 }
