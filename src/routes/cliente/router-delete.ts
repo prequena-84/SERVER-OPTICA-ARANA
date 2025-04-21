@@ -1,4 +1,4 @@
-import bodyParse from 'body-parser'
+import bodyParser from 'body-parser'
 import ISR from '../../class/class-router'
 import deleteClient from '../../modules/delete/client-delete'
 
@@ -7,7 +7,7 @@ import type { IRequest,IResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
-Router.use(bodyParse.json())
+Router.use(bodyParser.json())
 
 Router.delete('/:id', async(req:IRequest, res:IResponse):Promise<void> => {
     try {
