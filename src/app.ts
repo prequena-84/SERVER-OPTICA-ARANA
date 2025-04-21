@@ -19,7 +19,7 @@ servidor.all('/', (req:IRequest, res:IResponse ) => {
 })
 
 servidor.use('/customer', CUSTOMER)
-servidor.use('/prescriptions', PRESCRIPTION)
+servidor.use('/prescription', PRESCRIPTION)
 servidor.use('/user', USER)
 
 
