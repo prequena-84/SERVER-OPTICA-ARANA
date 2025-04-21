@@ -1,6 +1,6 @@
 import bodyParse from "body-parser"
 import ISR from '../../class/class-router'
-import deletePrescription from "../../modules/delete/prescription-delete"
+import deleteUser from '../../modules/delete/user-delete'
 
 import type { IRequest,IResponse } from 'types/TRouter'
 
@@ -10,7 +10,7 @@ Router.use(bodyParse.json())
 
 Router.delete('/:id', async(req:IRequest, res:IResponse): Promise<void> => { 
     try {
-        const respDelete = await deletePrescription(Number(req.params.id))
+        const respDelete = await deleteUser(Number(req.params.id))
 
         res.status(200).send({
             data:respDelete.data,

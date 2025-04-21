@@ -1,20 +1,20 @@
 import bodyParse from "body-parser"
 import ISR from '../../class/class-router'
-import deletePrescription from "../../modules/delete/prescription-delete"
+import User from '../../db/models/user'
 
-import type { IRequest,IResponse } from 'types/TRouter'
+import type { IRequest, IResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParse.json())
 
-Router.delete('/:id', async(req:IRequest, res:IResponse): Promise<void> => { 
+Router.get('/', async(req:IRequest, res:IResponse): Promise<void> => {
     try {
-        const respDelete = await deletePrescription(Number(req.params.id))
+        const allUser = await User.allUser()
 
         res.status(200).send({
-            data:respDelete.data,
-            message:respDelete.message,
+            data:allUser,
+            message:'Se descargo sastifactoriamente los datos',
         })
     } catch(err) {
         res.status(500).send({

@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose'
 
-import type { TIdClient } from 'types/TClient'
+import type { TIdOperation } from 'types/TPrescription'
 import type { IPrescription, IPrescriptionResp, IClientDocument, IPrescriptionModel } from 'interfaces/Iprescription'
 
 const prescriptionSchema = new Schema<IClientDocument>({
@@ -88,7 +88,7 @@ const prescriptionSchema = new Schema<IClientDocument>({
 })
 
 prescriptionSchema.statics.updateDataIdPrescription = async function(
-    idClient:TIdClient, 
+    idClient:TIdOperation, 
     dataUpdate:IPrescription
 ):Promise<IPrescriptionResp> {
     try {

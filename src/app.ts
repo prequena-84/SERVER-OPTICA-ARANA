@@ -7,6 +7,7 @@ import type { IRequest, IResponse } from 'types/TRouter'
 // Importación Servicios del modulo de Cliente
 import CUSTOMER from './services/service-client'
 import PRESCRIPTION from './services/service-prescription'
+import USER from './services/service-user'
 
 const CS = new ISR()
 const servidor = CS.Servidor()
@@ -17,7 +18,9 @@ servidor.all('/', (req:IRequest, res:IResponse ) => {
     res.send('Bienvenido a la API de Servicios de Optica ARANA')
 })
 
-servidor.use("/api-customer", CUSTOMER)
-servidor.use('/api-prescriptions', PRESCRIPTION)
+servidor.use('/customer', CUSTOMER)
+servidor.use('/prescriptions', PRESCRIPTION)
+servidor.use('/user', USER)
+
 
 servidor.listen(PORT, () => console.log(`Servidor corriendo en: http://localhost:${PORT}`))
