@@ -3,7 +3,7 @@ import Client from '../../db/models/client'
 
 import type { IClient, IClientResp } from "interfaces/Iclient"
 
-export default async function ClientAdd(dataClient:IClient):Promise<IClientResp> {
+export default async function ClientAdd( dataClient:IClient ): Promise<IClientResp> {
     try {
         
         await connectDB()

@@ -9,7 +9,7 @@ const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
-Router.post('/', async (req:IRequest, res:IResponse):Promise<void> => {
+Router.post('/', async ( req:IRequest, res:IResponse ): Promise<void> => {
     try {
         const data:IUser = req.body, respUser = await userAdd(data)
 

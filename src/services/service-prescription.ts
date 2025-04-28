@@ -9,7 +9,7 @@ import type { IRequest,IResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
-Router.get('/', async(req:IRequest,res:IResponse):Promise<void> => {
+Router.get('/', async( _req:IRequest, res:IResponse ): Promise<void> => {
     try {
         res.status(200).send({
             message:'Bienvenido al Servicio de Prescripción',

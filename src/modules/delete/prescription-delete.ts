@@ -4,9 +4,7 @@ import Prescription from '../../db/models/prescription'
 import type { TIdOperation } from 'types/TPrescription'
 import type { IPrescriptionResp } from 'interfaces/Iprescription'
 
-export default async function deletePrescription(
-    idOperation:TIdOperation
-):Promise<IPrescriptionResp> {
+export default async function deletePrescription( idOperation:TIdOperation ): Promise<IPrescriptionResp> {
     try {
         await connectDB()
         const respDelete = await Prescription.deleteOne({ idOperation:idOperation  })

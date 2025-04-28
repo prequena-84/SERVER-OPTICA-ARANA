@@ -5,10 +5,7 @@ import type { IRequest,IResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
-export default Router.get('/', async(
-    req:IRequest, 
-    res:IResponse
-):Promise<void> => {
+export default Router.get('/', async( _req:IRequest, res:IResponse ): Promise<void> => {
     try {
         const report = await reportCliente()
 

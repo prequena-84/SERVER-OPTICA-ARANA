@@ -9,7 +9,7 @@ const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
-Router.delete('/:id', async(req:IRequest, res:IResponse):Promise<void> => {
+Router.delete('/:id', async( req:IRequest, res:IResponse ): Promise<void> => {
     try {
         const respDeleteClient = await deleteClient(Number(req.params.id))
 

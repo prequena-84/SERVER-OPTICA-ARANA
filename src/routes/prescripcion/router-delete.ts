@@ -8,7 +8,7 @@ const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
-Router.delete('/:id', async(req:IRequest, res:IResponse): Promise<void> => { 
+Router.delete('/:id', async( req:IRequest, res:IResponse ): Promise<void> => { 
     try {
         const respDelete = await deletePrescription(Number(req.params.id))
 

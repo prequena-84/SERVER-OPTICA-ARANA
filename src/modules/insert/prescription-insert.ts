@@ -3,9 +3,7 @@ import Prescription from '../../db/models/prescription'
 
 import type { IPrescription, IPrescriptionResp } from 'interfaces/Iprescription'
 
-export default async function prescriptionAdd(
-    dataPrescription: IPrescription,
-):Promise<IPrescriptionResp> {
+export default async function prescriptionAdd( dataPrescription: IPrescription ): Promise<IPrescriptionResp> {
     try {
         await connectDB()
         return await Prescription.createInstance(dataPrescription)

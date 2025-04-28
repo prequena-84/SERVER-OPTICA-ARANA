@@ -9,7 +9,7 @@ const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
-Router.post('/:id', async(req:IRequest, res:IResponse):Promise<void> => {
+Router.post('/:id', async( req:IRequest, res:IResponse ): Promise<void> => {
     try {
         const 
             data:IPrescription = req.body,

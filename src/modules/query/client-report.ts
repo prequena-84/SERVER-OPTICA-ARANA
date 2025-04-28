@@ -3,7 +3,7 @@ import Client from '../../db/models/client'
 
 import type { IPrescription,IPrescriptionResp } from 'interfaces/Iprescription'
 
-export default async function reportCliente():Promise<IPrescriptionResp> {
+export default async function reportCliente(): Promise<IPrescriptionResp> {
     try {
         await connectDB()
 

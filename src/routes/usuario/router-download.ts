@@ -8,7 +8,7 @@ const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
-Router.get('/', async(req:IRequest, res:IResponse): Promise<void> => {
+Router.get('/', async( req:IRequest, res:IResponse ): Promise<void> => {
     try {
         const allUser = await User.allUser()
 

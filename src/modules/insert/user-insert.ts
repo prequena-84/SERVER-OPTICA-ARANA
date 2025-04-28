@@ -3,7 +3,7 @@ import User from '../../db/models/user'
 
 import type { IUser, IUserResp } from 'interfaces/Iuser'
 
-export default async function userAdd(dataUser:IUser):Promise<IUserResp> {
+export default async function userAdd( dataUser:IUser ): Promise<IUserResp> {
     try {
 
         await connectDB()

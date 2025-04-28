@@ -4,7 +4,7 @@ import User from '../../db/models/user'
 import type { TIdUser } from 'types/TUser'
 import { IUserResp } from 'interfaces/Iuser'
 
-export default async function deleteUser(idUser:TIdUser):Promise<IUserResp> {
+export default async function deleteUser( idUser:TIdUser ): Promise<IUserResp> {
     try {
         await connectDB()
         const respDelete = await User.deleteOne({ idUsuario:idUser })

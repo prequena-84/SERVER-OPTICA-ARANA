@@ -4,7 +4,7 @@ import Client from '../../db/models/client'
 import type { TIdClient } from 'types/TClient'
 import type { IClient, IClientResp } from "interfaces/Iclient"
 
-export default async function getClient(idClient:TIdClient, data:IClient): Promise<IClientResp> {
+export default async function getClient( idClient:TIdClient, data:IClient ): Promise<IClientResp> {
     try {
         await connectDB()
         return await Client.updateDataIdClient(idClient,data)
