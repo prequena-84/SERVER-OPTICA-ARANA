@@ -3,13 +3,13 @@ import ISR from '../../class/class-router'
 import deleteClient from '../../modules/delete/client-delete'
 
 import type { IClient } from 'interfaces/Iclient'
-import type { IRequest,IResponse } from 'types/TRouter'
+import type { TRequest,TResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
-Router.delete('/:id', async( req:IRequest, res:IResponse ): Promise<void> => {
+Router.delete('/:id', async( req:TRequest, res:TResponse ): Promise<void> => {
     try {
         const respDeleteClient = await deleteClient(Number(req.params.id))
 

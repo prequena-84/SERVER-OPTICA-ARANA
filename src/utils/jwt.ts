@@ -1,5 +1,5 @@
 import jwt, { JwtPayload, SignOptions } from 'jsonwebtoken';
-import keyJWT from './private.key'
+import keyJWT from '../functions/private.key'
 
 const secreKey = process.env.secretKey || keyJWT()
 
@@ -8,7 +8,7 @@ const generateToken = (userId:string): string => {
     return jwt.sign({ userId }, secreKey, options)
 }
 
-const validateToken = (token:string): string | null => {
+const validateToken = (token:string): string | JwtPayload | null => {
     try {
         const decoded = jwt.verify(token, secreKey) as JwtPayload
         return decoded.userId

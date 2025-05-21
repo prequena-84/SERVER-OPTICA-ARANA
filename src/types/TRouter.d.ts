@@ -1,9 +1,13 @@
-import { Request, Response } from 'express'
+import { Request, Response, NextFunction } from 'express'
 
-type IRequest = Request
-type IResponse = Response
+type TRequest = Request
+type TResponse = Response
+type TNextFunction = NextFunction
+
+
 
 export {
-    IRequest,
-    IResponse,
+    TRequest,
+    TResponse,
+    TNextFunction,
 }

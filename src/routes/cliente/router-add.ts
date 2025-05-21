@@ -3,13 +3,13 @@ import ISR from '../../class/class-router'
 import ClientAdd from  '../../modules/insert/client-insert'
 
 import type { IClient } from 'interfaces/Iclient'
-import type { IRequest,IResponse } from 'types/TRouter'
+import type { TRequest,TResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
-Router.post('/', async ( req:IRequest, res:IResponse ): Promise<void> => {
+Router.post('/', async ( req:TRequest, res:TResponse ): Promise<void> => {
     try {
         const dataClient:IClient = req.body, respClient = await ClientAdd(dataClient)
 

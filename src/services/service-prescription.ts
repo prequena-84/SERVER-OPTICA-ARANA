@@ -5,11 +5,11 @@ import PRESCRIPTION_MODIFY from '../routes/prescripcion/router-modify'
 import PRESCRIPTION_DELETE from '../routes/prescripcion/router-delete'
 import PRESCRIPTION_DOWNLOAD from '../routes/prescripcion/router-download'
 
-import type { IRequest,IResponse } from 'types/TRouter'
+import type { TRequest,TResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
-Router.get('/', async( _req:IRequest, res:IResponse ): Promise<void> => {
+Router.get('/', async( _req:TRequest, res:TResponse ): Promise<void> => {
     try {
         res.status(200).send({
             message:'Bienvenido al Servicio de Prescripción',

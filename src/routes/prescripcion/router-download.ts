@@ -2,13 +2,13 @@ import bodyParser from "body-parser"
 import ISR from '../../class/class-router'
 import Prescription from '../../db/models/prescription'
 
-import type { IRequest, IResponse } from 'types/TRouter'
+import type { TRequest, TResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
-Router.get('/', async( _req:IRequest, res:IResponse ): Promise<void> => {
+Router.get('/', async( _req:TRequest, res:TResponse ): Promise<void> => {
     try {
         const allPrescriptions = await Prescription.allPrescriptions()
 

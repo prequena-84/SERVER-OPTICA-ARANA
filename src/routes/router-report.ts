@@ -1,11 +1,11 @@
 import ISR from '../class/class-router'
 import reportCliente from '../modules/query/client-report'
 
-import type { IRequest,IResponse } from 'types/TRouter'
+import type { TRequest,TResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
-export default Router.get('/', async( _req:IRequest, res:IResponse ): Promise<void> => {
+export default Router.get('/', async( _req:TRequest, res:TResponse ): Promise<void> => {
     try {
         const report = await reportCliente()
 

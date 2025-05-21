@@ -3,13 +3,13 @@ import ISR from '../../class/class-router'
 import prescriptionAdd from '../../modules/insert/prescription-insert'
 
 import type { IPrescription } from "interfaces/Iprescription"
-import type { IRequest,IResponse } from 'types/TRouter'
+import type { TRequest,TResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
-Router.post('/', async ( req:IRequest, res:IResponse ): Promise<void> => {
+Router.post('/', async ( req:TRequest, res:TResponse ): Promise<void> => {
     try {
         const data:IPrescription = req.body, respPrescription = await prescriptionAdd(data)
 

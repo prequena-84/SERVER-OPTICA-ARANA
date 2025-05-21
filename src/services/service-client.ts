@@ -9,13 +9,13 @@ import CUSTOMER_DOWNLOAD from '../routes/cliente/router-modify'
 import CUSTOMER_REPORT from '../routes/router-report'
 
 // Importación de tipos
-import type { IRequest,IResponse } from 'types/TRouter'
+import type { TRequest,TResponse } from 'types/TRouter'
 
 // Instancia de la clase Servido y Router
 const CR = new ISR(), Router = CR.Router()
 
 // Importación de la descripcion del servicio
-Router.get('/', async( _req:IRequest, res:IResponse ): Promise<void> => {
+Router.get('/', async( _req:TRequest, res:TResponse ): Promise<void> => {
     try {
         res.status(200).send({
             message:'Bienvenido al Servicio de Clientes',
