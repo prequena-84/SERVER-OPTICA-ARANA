@@ -7,6 +7,8 @@ import USER_UPDATE from '../routes/usuario/router-modify'
 import USER_DELETE from '../routes/usuario/router-delete'
 import USER_DOWNLOAD from '../routes/usuario/router-download'
 
+import USER_LOGIN from '../controllers/user.controller'
+
 // Importación de tipos
 import type { TRequest,TResponse } from 'types/TRouter'
 
@@ -30,5 +32,6 @@ Router.get('/insert', USER_ADD)
 Router.get('/update', USER_UPDATE)
 Router.get('/delete', USER_DELETE)
 Router.get('/download', USER_DOWNLOAD)
+Router.post('/Login', USER_LOGIN)
 
 export default Router

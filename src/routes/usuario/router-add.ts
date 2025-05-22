@@ -1,8 +1,8 @@
-import bodyParser from "body-parser"
+import bodyParser from 'body-parser'
 import ISR from '../../class/class-router'
 import userAdd from '../../modules/insert/user-insert'
 
-import type { IUser } from "interfaces/Iuser"
+import type { IUser } from 'interfaces/Iuser'
 import type { TRequest, TResponse } from 'types/TRouter'
 
 const CR = new ISR(), Router = CR.Router()

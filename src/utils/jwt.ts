@@ -3,9 +3,9 @@ import keyJWT from '../functions/private.key'
 
 const secreKey = process.env.secretKey || keyJWT()
 
-const generateToken = (userId:string): string => {
+const generateToken = (userName:string): string => {
     const options: SignOptions = { expiresIn: '10m' } // Token expiration time 30 min
-    return jwt.sign({ userId }, secreKey, options)
+    return jwt.sign({ userName }, secreKey, options)
 }
 
 const validateToken = (token:string): string | JwtPayload | null => {
