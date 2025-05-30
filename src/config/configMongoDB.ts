@@ -10,7 +10,7 @@ const connectDB = async ():Promise<void> => {
         await mongoose.connect(uriMongoDB)
     } catch(err) {
         console.log('Error al intentar de conectarse a Mongoose: ', err )
-        process.exit(1); // Salir del proceso en caso de error
+        //process.exit(1); // Salir del proceso en caso de error
     }
 }
 
