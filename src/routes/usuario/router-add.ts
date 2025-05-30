@@ -11,14 +11,13 @@ Router.use(bodyParser.json())
 
 Router.post('/', async ( req:TRequest, res:TResponse ): Promise<void> => {
     try {
-        const data:IUser = req.body, respUser = await userAdd(data)
+        const data:IUser = req.body.dataUser, respUser = await userAdd(data)
 
         res.status(200).send({
             data:respUser.data,
             message: respUser.message,
         })
     } catch(err) {
-
         res.status(500).send({
             data:null,
             message:`Error en el registro de datos: ${err}`,

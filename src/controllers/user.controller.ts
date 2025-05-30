@@ -10,6 +10,9 @@ const CR = new ISR(), Router = CR.Router()
 
 Router.use(bodyParser.json())
 
+// Quede pendiente de Hacer la primera prueba desde el Front-End para probar el envio de la usuario y Clave 
+// Para Probar la recepcion del token y luego su validación
+
 Router.post('/', ( req:TRequest, res:TResponse ) => {
     const { userName, Password } = req.body
 
@@ -24,7 +27,7 @@ Router.post('/', ( req:TRequest, res:TResponse ) => {
     const token = generateToken(userName)
 
     console.log('Nuevo Token creado:', token)
-    
+
     res.status(201).json({ message: 'Usuario creado', token })
 })
 

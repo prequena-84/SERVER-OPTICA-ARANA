@@ -27,10 +27,10 @@ Router.get('/', async( _req:TRequest, res:TResponse ): Promise<void> => {
     }
 }) 
 
-Router.get('/insert', CUSTOMER_ADD)
-Router.get('/update', CUSTOMER_UPDATE)
-Router.get('/delete', CUSTOMER_DELETE)
-Router.get('/download', CUSTOMER_DOWNLOAD)
-Router.get('/report', CUSTOMER_REPORT)
+Router.use('/insert', CUSTOMER_ADD)
+Router.use('/update', CUSTOMER_UPDATE)
+Router.use('/delete', CUSTOMER_DELETE)
+Router.use('/download', CUSTOMER_DOWNLOAD)
+Router.use('/report', CUSTOMER_REPORT)
 
 export default Router

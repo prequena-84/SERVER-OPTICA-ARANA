@@ -1,14 +1,19 @@
 import { Schema, model } from 'mongoose'
+import bcrypt from 'bcrypt'
 
 import type { TIdUser } from 'types/TUser'
 import type { IUser, IUserDocument, IUserModel, IUserResp } from 'interfaces/Iuser'
 
 const prescriptionSchema = new Schema<IUserDocument>({
     idUsuario: { 
-        type: Number, 
+        type: String, 
         unique: true, 
         required: true
     }, 
+    Password: {
+        type: String,
+        require:true,
+    },
     userName: { 
         type: String, 
         required: true
@@ -26,9 +31,21 @@ const prescriptionSchema = new Schema<IUserDocument>({
         default: null,
     },
     WhastApp: { 
-        type:Number, 
+        type:String, 
         default: 0,
     },
+})
+
+prescriptionSchema.pre('save', async function(next): Promise<void> {
+    // Retornamos next si es Null o sino es modificado la contraseña
+    if (!this.Password) return next() 
+    if (!this.isModified('Password')) return next()
+
+    const salt = await bcrypt.genSalt(10)
+    this.Password = await bcrypt.hash(this.Password, salt)
+    
+    console.log('registro de contraseña')
+    next()
 })
 
 prescriptionSchema.statics.updateDataIdUser = async function(
@@ -57,9 +74,10 @@ prescriptionSchema.statics.allUser = async function ():Promise<IUser[]> {
     return await this.find()
 }
 
-prescriptionSchema.statics.createInstance = async function(dataUser:IUser[]):Promise<IUserResp> {
+prescriptionSchema.statics.createInstance = async function(dataUser:IUser):Promise<IUserResp> {
     try {
-        const [
+
+        const {
             idUsuario,
             userName,
             Password,
@@ -67,7 +85,7 @@ prescriptionSchema.statics.createInstance = async function(dataUser:IUser[]):Pro
             Apellidos,
             Email,
             WhastApp,
-        ] = dataUser
+        } = dataUser
 
         const newPrescription = new this({
             idUsuario,
@@ -86,9 +104,11 @@ prescriptionSchema.statics.createInstance = async function(dataUser:IUser[]):Pro
             message:`Se registro el Usuario #${newPrescription.userName} sastifactoriamente`,
         }
     } catch(err){
+        console.log(err)
+
         return {
             data:null,
-            message:`Se presento el siguiente error al registrar al nuevo cliente: ${err}`,
+            message:`Se presento el siguiente error al registrar al nuevo usuario: ${err}`,
         }
     }
 }

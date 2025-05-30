@@ -13,7 +13,7 @@ Router.post('/:id', async( req:TRequest, res:TResponse ): Promise<void> => {
     try {
         const 
             data:IUser = req.body,
-            GetUser = await getUser(Number(req.params.id), data)
+            GetUser = await getUser(req.params.id, data)
 
         res.status(200).send({
             data:GetUser.data,

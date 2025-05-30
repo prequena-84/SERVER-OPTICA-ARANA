@@ -18,6 +18,8 @@ const CR = new ISR(), Router = CR.Router()
 // Importación de la descripcion del servicio
 Router.get('/', async( _req:TRequest, res:TResponse ): Promise<void> => {
     try {
+        console.log('ingreso a la peticion')
+
         res.status(200).send({
             message:'Bienvenido al Servicio de Usuario',
         })
@@ -28,10 +30,10 @@ Router.get('/', async( _req:TRequest, res:TResponse ): Promise<void> => {
     }
 }) 
 
-Router.get('/insert', USER_ADD)
-Router.get('/update', USER_UPDATE)
-Router.get('/delete', USER_DELETE)
-Router.get('/download', USER_DOWNLOAD)
-Router.post('/Login', USER_LOGIN)
+Router.use('/insert', USER_ADD)
+Router.use('/update', USER_UPDATE)
+Router.use('/delete', USER_DELETE)
+Router.use('/download', USER_DOWNLOAD)
+Router.use('/login', USER_LOGIN)
 
 export default Router

@@ -5,11 +5,11 @@ interface IUser {
     idUsuario?:TIdUser;
     userName:TUser;
     Password:TPassword;
-    Nombres?:String;
-    Apellidos?:String;
-    Email?:String
-    WhastApp?:Number;
-    Token?:string;
+    Nombres?:string;
+    Apellidos?:string;
+    Email?:string
+    WhastApp?:string;
+    //Token?:string;
 }
 
 interface IUserResp {
