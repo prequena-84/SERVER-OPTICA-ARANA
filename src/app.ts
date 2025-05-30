@@ -9,16 +9,12 @@ import CUSTOMER from './services/service-client'
 import PRESCRIPTION from './services/service-prescription'
 import USER from './services/service-user'
 
-// Importación de la funcion que genera la key de prueba
-import keyJWT from './functions/private.key'
-
 const CS = new ISR()
 const servidor = CS.Servidor()
 
 servidor.use( cors() )
 
 servidor.all( '/', ( _req:TRequest, res:TResponse ) => {
-    console.log(`key=> ${keyJWT()}`)
     res.send('Bienvenido a la API de Servicios de Optica ARANA')
 })
 

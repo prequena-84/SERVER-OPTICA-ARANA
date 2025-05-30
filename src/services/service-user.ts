@@ -7,6 +7,7 @@ import USER_UPDATE from '../routes/usuario/router-modify'
 import USER_DELETE from '../routes/usuario/router-delete'
 import USER_DOWNLOAD from '../routes/usuario/router-download'
 
+// Importación modulo de login
 import USER_LOGIN from '../controllers/user.controller'
 
 // Importación de tipos
@@ -18,8 +19,6 @@ const CR = new ISR(), Router = CR.Router()
 // Importación de la descripcion del servicio
 Router.get('/', async( _req:TRequest, res:TResponse ): Promise<void> => {
     try {
-        console.log('ingreso a la peticion')
-
         res.status(200).send({
             message:'Bienvenido al Servicio de Usuario',
         })

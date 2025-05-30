@@ -43,8 +43,6 @@ prescriptionSchema.pre('save', async function(next): Promise<void> {
 
     const salt = await bcrypt.genSalt(10)
     this.Password = await bcrypt.hash(this.Password, salt)
-    
-    console.log('registro de contraseña')
     next()
 })
 
@@ -104,8 +102,6 @@ prescriptionSchema.statics.createInstance = async function(dataUser:IUser):Promi
             message:`Se registro el Usuario #${newPrescription.userName} sastifactoriamente`,
         }
     } catch(err){
-        console.log(err)
-
         return {
             data:null,
             message:`Se presento el siguiente error al registrar al nuevo usuario: ${err}`,

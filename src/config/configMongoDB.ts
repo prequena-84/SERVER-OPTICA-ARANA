@@ -8,7 +8,6 @@ const uriMongoDB = `mongodb+srv://${process.env.USER_MONGODB}:${process.env.KEY_
 const connectDB = async ():Promise<void> => {
     try {
         await mongoose.connect(uriMongoDB)
-        console.log('MongoDB connected')
     } catch(err) {
         console.log('Error al intentar de conectarse a Mongoose: ', err )
         process.exit(1); // Salir del proceso en caso de error
