@@ -10,7 +10,7 @@ Router.use(bodyParser.json())
 
 Router.delete('/:id', async( req:TRequest, res:TResponse ): Promise<void> => { 
     try {
-        const respDelete = await deleteUser(Number(req.params.id))
+        const respDelete = await deleteUser(req.params.id)
 
         res.status(200).send({
             data:respDelete.data,

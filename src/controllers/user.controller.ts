@@ -32,9 +32,12 @@ Router.post('/', async ( req:TRequest, res:TResponse ) => {
         if ( userValidation ) {
             dataUsers.push({ userName, Password })
             const token = generateToken(userName)
-            res.status(201).json({ message: 'Autorizado', token })
 
+            console.log('genero el token', token)
+
+            res.status(201).json({ message: 'Autorizado', token })
         } else {
+
             res.status(401).json({ message: 'No Autorizado' })
         }
     } catch(err) {

@@ -8,6 +8,7 @@ import type { TRequest, TResponse } from 'types/TRouter'
 import CUSTOMER from './services/service-client'
 import PRESCRIPTION from './services/service-prescription'
 import USER from './services/service-user'
+import VALIDATE_TOKEN from './utils/validar-token'
 
 const CS = new ISR()
 const servidor = CS.Servidor()
@@ -21,5 +22,6 @@ servidor.all( '/', ( _req:TRequest, res:TResponse ) => {
 servidor.use( '/customer', CUSTOMER )
 servidor.use( '/prescription', PRESCRIPTION )
 servidor.use( '/user', USER )
+servidor.use('/token', VALIDATE_TOKEN)
 
 servidor.listen( PORT, () => console.log(`Servidor corriendo en: http://localhost:${PORT}`) )
