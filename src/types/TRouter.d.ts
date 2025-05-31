@@ -1,10 +1,11 @@
 import { Request, Response, NextFunction } from 'express'
 
-type TRequest = Request
+interface TRequest extends Request {
+    userName?: string; 
+}
+
 type TResponse = Response
 type TNextFunction = NextFunction
-
-
 
 export {
     TRequest,

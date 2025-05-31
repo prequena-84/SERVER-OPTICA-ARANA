@@ -23,8 +23,9 @@ Router.post('/', async ( req:TRequest, res:TResponse ) => {
     try {
         const { userName, Password } = req.body.dataUser
         if ( !userName || !Password ) res.status(400).json({ message: 'Datos incompletos' })
+        
         await connectDB()
-
+        
         const userDB = await User.findOne( {userName:userName} );
         const userValidation = await bcrypt.compare(Password, userDB?.Password || '')
 

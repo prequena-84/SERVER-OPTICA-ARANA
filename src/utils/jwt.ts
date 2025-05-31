@@ -11,8 +11,10 @@ const generateToken = (userName:string): string => {
 const validateToken = (token:string): string | JwtPayload | null => {
     try {
         const decoded = jwt.verify(token, secreKey) as JwtPayload
-        return decoded.userId
+
+        return decoded
     } catch( err ) {
+        console.log('error en validateToken', err)
         return null //Token invalido
     }
 }
