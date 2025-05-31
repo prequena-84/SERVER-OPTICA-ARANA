@@ -5,7 +5,7 @@ const secreKey = process.env.secretKey || keyJWT()
 
 const generateToken = (userName:string): string => {
     // Establecer el tiempo expiration Token por el .env
-    const options: SignOptions = { expiresIn: '1m' } 
+    const options: SignOptions = { expiresIn: '20m' } 
 
     return jwt.sign({ userName }, secreKey, options)
 }
