@@ -1,4 +1,3 @@
-import path from 'path'
 import jwt, { JwtPayload, SignOptions } from 'jsonwebtoken';
 import keyJWT from '../functions/private.key'
 
@@ -13,14 +12,10 @@ const generateToken = (userName:string): string => {
 
 const validateToken = (token:string): string | JwtPayload | null => {
     try {
-
-        console.log('revision del token', token )
-
         const decoded = jwt.verify(token, secreKey) as JwtPayload
-
         return decoded
     } catch( err ) {
-        console.log('error en validateToken', err)
+        console.error('error en validateToken', err)
         return null //Token invalido
     }
 }
